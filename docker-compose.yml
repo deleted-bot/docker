@@ -1,0 +1,29 @@
+version: "2"
+volumes:
+  redis-data:
+services:
+  web:
+    container_name: deletedbot_web
+    build: .
+    ports:
+      - "${PORT}:8080"
+    volumes:
+      - ./src:/src
+    environment:
+      - "PORT=${PORT}"
+      - "REDIS_ADDR=${REDIS_ADDR}"
+      - "FRONTEND_HOST=${FRONTEND_HOST}"
+      - "BACKEND_HOST=${BACKEND_HOST}"
+      - "ADMIN_USERNAME=${ADMIN_USERNAME}"
+      - "ADMIN_PASSWORD=${ADMIN_PASSWORD}"
+      - "GIN_MODE=${GIN_MODE}"
+    restart: always
+    depends_on:
+      - db
+  db:
+    container_name: deletedbot_redis
+    image: redis
+    restart: always
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
