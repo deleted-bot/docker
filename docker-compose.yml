@@ -11,7 +11,7 @@ services:
       - ./src:/src
     environment:
       - "PORT=${PORT}"
-      - "REDIS_ADDR=${REDIS_ADDR}"
+      - "REDIS_ADDR=db:6379"
       - "FRONTEND_HOST=${FRONTEND_HOST}"
       - "BACKEND_HOST=${BACKEND_HOST}"
       - "ADMIN_USERNAME=${ADMIN_USERNAME}"

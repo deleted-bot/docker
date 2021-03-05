@@ -1,0 +1,6 @@
+PORT=The port your container will run on
+FRONTEND_HOST=The site that will be sent in every /start message
+BACKEND_HOST=Hostname of your backend (must be port 80, so use a reverse proxy)
+ADMIN_USERNAME=AdminUsername
+ADMIN_PASSWORD=SuperSafePassword1234
+GIN_MODE=release
